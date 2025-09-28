@@ -1,15 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { 
   Menu, 
   X, 
   Mail, 
-  Phone, 
   MapPin, 
-  ExternalLink,
   Calendar,
   Award,
   BookOpen,
@@ -17,8 +15,6 @@ import {
   Code,
   User,
   ChevronRight,
-  Github,
-  Linkedin,
   Fuel,
   Container,
   Factory
@@ -30,7 +26,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState('hero');
 
   // Navigation items
-  const navItems = [
+  const navItems = useMemo(() => [
     { id: 'hero', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'experience', label: 'Experience' },
@@ -38,7 +34,7 @@ export default function Home() {
     { id: 'education', label: 'Education' },
     { id: 'skills', label: 'Skills' },
     { id: 'contact', label: 'Contact' }
-  ];
+  ], []);
 
   // Scroll to section
   const scrollToSection = (sectionId: string) => {
@@ -66,7 +62,7 @@ export default function Home() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navItems]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
@@ -477,7 +473,7 @@ function AboutSection() {
                 className="bg-gradient-to-br from-slate-700/50 to-slate-800/50 p-6 rounded-lg border border-slate-600/50 hover:border-blue-400/50 transition-all"
               >
                 <BookOpen className="text-blue-400 mb-4" size={32} />
-                <h4 className="text-white font-semibold mb-2">Master's Degree</h4>
+                <h4 className="text-white font-semibold mb-2">Master&apos;s Degree</h4>
                 <p className="text-slate-400 text-sm">Oil & Gas Engineering</p>
               </motion.div>
               
@@ -892,9 +888,9 @@ function ContactSection() {
           </h2>
           
           <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-2xl font-semibold text-white mb-6">Let's Connect</h3>
+            <h3 className="text-2xl font-semibold text-white mb-6">Let&apos;s Connect</h3>
             <p className="text-slate-300 mb-12">
-              I'm always interested in discussing new opportunities, collaborations, 
+              I&apos;m always interested in discussing new opportunities, collaborations, 
               or simply connecting with fellow professionals in the oil and gas industry.
             </p>
             
