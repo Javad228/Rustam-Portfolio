@@ -399,27 +399,6 @@ function ExpertiseSection() {
           </motion.div>
         </div>
 
-        {/* Animated Oil Flow Visual */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 1, delay: 1 }}
-          className="mt-12 relative h-32 overflow-hidden rounded-lg bg-slate-800/30"
-        >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-full max-w-4xl h-16 bg-slate-700/50 rounded-full relative overflow-hidden">
-              <motion.div
-                className="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 rounded-full"
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white font-semibold text-lg">Oil Flow Optimization</span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
