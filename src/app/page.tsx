@@ -177,10 +177,49 @@ function HeroSection() {
 
   return (
     <section id="hero" ref={ref} className="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      {/* Hero Background - Liquid Waves + Grid + Blobs */}
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        {/* Soft gradient blobs */}
+        <motion.div
+          className="absolute -top-40 -left-40 w-[48rem] h-[48rem] rounded-full bg-blue-500/20 blur-3xl"
+          animate={{ x: [0, 30, 0], y: [0, -40, 0], scale: [1, 1.05, 1] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute -bottom-40 -right-40 w-[48rem] h-[48rem] rounded-full bg-indigo-500/20 blur-3xl"
+          animate={{ x: [0, -25, 0], y: [0, 35, 0], scale: [1, 1.08, 1] }}
+          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+
+        {/* Subtle grid */}
+        <div
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, rgba(226,232,240,0.3) 1px, transparent 1px), linear-gradient(to bottom, rgba(226,232,240,0.3) 1px, transparent 1px)',
+            backgroundSize: '40px 40px'
+          }}
+        />
+
+        {/* Liquid waves */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0"
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+        >
+          <svg width="200%" height="180" viewBox="0 0 1200 180" preserveAspectRatio="none" className="text-blue-400/20">
+            <path d="M0,80 C150,140 350,20 600,80 C850,140 1050,20 1200,80 L1200,180 L0,180 Z" fill="currentColor" />
+          </svg>
+        </motion.div>
+        <motion.div
+          className="absolute bottom-0 left-0 right-0"
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ duration: 28, repeat: Infinity, ease: 'linear', delay: 0.5 }}
+        >
+          <svg width="200%" height="220" viewBox="0 0 1200 220" preserveAspectRatio="none" className="text-cyan-400/10">
+            <path d="M0,120 C200,60 400,200 600,120 C800,40 1000,180 1200,120 L1200,220 L0,220 Z" fill="currentColor" />
+          </svg>
+        </motion.div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -236,7 +275,7 @@ function HeroSection() {
               
               {/* Profile Image */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-blue-400/50 shadow-2xl">
-                <Image
+            <Image
                   src="/rustam-headshot.png"
                   alt="Rustam Baghirov"
                   fill
@@ -862,7 +901,7 @@ function SkillsSection() {
             </div>
           </div>
         </motion.div>
-      </div>
+    </div>
     </section>
   );
 }
